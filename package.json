@@ -8,7 +8,7 @@
         "start": "npm run dev",
         "dev": "webpack serve --open /view/index.html",
         "build": "webpack --mode production",
-        "deploy": "rm -rf public/* && npm run build && cp -R ./view/* ./public"
+        "deploy": "rm -rf public/* && npm run build && rm -rf docs/* && cp -R ./view/* ./docs && cp ./public/* ./docs"
     },
     "dependencies": {
         "@babel/core": "^7.15.4",
