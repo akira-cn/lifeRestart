@@ -28,4 +28,14 @@ function average(...arr) {
     return s / arr.flat().length;
 }
 
-export { clone, max, min, sum, average };
+function map(arr) {
+    const map = {};
+    arr.forEach((data, i) => {
+        const id = data.id != null ? data.id : i;
+        if(map[id]) throw new Error(`Duplicated ID. ${id}`);
+        map[id] = data;
+    });
+    return map;
+}
+
+export { clone, max, min, sum, average, map };

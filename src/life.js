@@ -2,6 +2,10 @@ import Property from './property.js';
 import Event from './event.js';
 import Talent from './talent.js';
 import Achievement from './achievement.js';
+import { talents } from './data/talents.js';
+import { age } from './data/age.js';
+import { events } from './data/events.js';
+import { achievements } from './data/achievements.js'
 
 class Life {
     constructor() {
@@ -18,12 +22,6 @@ class Life {
     #triggerTalents;
 
     async initial() {
-        const [age, talents, events, achievements] = await Promise.all([
-          json('age'),
-          json('talents'),
-          json('events'),
-          json('achievement'),
-        ])
         this.#property.initial({age});
         this.#talent.initial({talents});
         this.#event.initial({events});
