@@ -104,7 +104,7 @@ const talentList = [
   }, {
     id: 1010,
     name: "富二代",
-    description: "你是富二代，不差钱，收入+1，心态+2",
+    description: "你是富二代，不差钱，收入+2，心态+2",
     grade: 2,
     exclusive: [
       1011,
@@ -112,7 +112,7 @@ const talentList = [
     ],
     effect: {
       SPR: 2,
-      MNY: 1,
+      MNY: 2,
     }
   }, {
     id: 1011,
@@ -415,6 +415,11 @@ const talentList = [
     id: 1057,
     name: "BUG体质",
     description: "代码容易出bug",
+    grade: 0,
+  }, {
+    id: 1058,
+    name: "啃老族",
+    description: "即使收入低也能保持好心态",
     grade: 0,
   }
 ];

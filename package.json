@@ -5,8 +5,10 @@
     "scripts": {
         "test": "node test",
         "xlsxTransform": "node utils/xlsxTransform.js data",
+        "start": "npm run dev",
         "dev": "webpack serve --open /view/index.html",
-        "build": "webpack --mode production"
+        "build": "webpack --mode production",
+        "deploy": "rm -rf public/* && npm run build && cp -R ./view/* ./public"
     },
     "dependencies": {
         "@babel/core": "^7.15.4",
