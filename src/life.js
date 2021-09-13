@@ -51,7 +51,7 @@ class Life {
         const {age, event, talent} = this.#property.ageNext();
 
         const talentContent = this.doTalent(talent);
-        console.log(this.#property.get('WRK'));
+        console.log(this.#property.get('ENV'));
 
         const eventContent = this.doEvent(this.random(event));
 

@@ -18,6 +18,7 @@ class Property {
         LCK: "LCK", // 运气 luck LCK，隐藏属性，从-10到10随机变化
         WRK: "WRK", // 司龄 work WRK
         PRG: "PRG", // 怀孕状态
+        ENV: "ENV", // 工作环境 1-很差 2-小厂 3-大厂 4-垄断企业 5-国企
 
         // Auto calc
         LAGE: "LAGE", // 最低年龄 Low Age
@@ -87,6 +88,7 @@ class Property {
             [this.TYPES.LCK]: 0,
             [this.TYPES.WRK]: 0,
             [this.TYPES.PRG]: 0,
+            [this.TYPES.ENV]: 0,
 
             [this.TYPES.LIF]: 1,
 
@@ -139,6 +141,7 @@ class Property {
             case this.TYPES.EVT:
             case this.TYPES.WRK:
             case this.TYPES.PRG:
+            case this.TYPES.ENV:
                 return clone(this.#data[prop]);
             case this.TYPES.LCK:
                 return this.#data[prop] + Math.floor(20 * Math.random()) - 10;
@@ -223,6 +226,7 @@ class Property {
             case this.TYPES.LCK:
             case this.TYPES.WRK:
             case this.TYPES.PRG:
+            case this.TYPES.ENV:
                 this.hl(prop, this.#data[prop] = clone(value));
                 this.achieve(prop, value);
                 return;

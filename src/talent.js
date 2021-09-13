@@ -65,9 +65,15 @@ class Talent {
                 if(!i && include) return include;
                 const gradeRandom = Math.random();
                 let grade;
-                if(gradeRandom>=0.111) grade = 0;
-                else if(gradeRandom>=0.011) grade = 1;
-                else if(gradeRandom>=0.001) grade = 2;
+                // if(gradeRandom>=0.111) grade = 0;
+                // else if(gradeRandom>=0.011) grade = 1;
+                // else if(gradeRandom>=0.001) grade = 2;
+                // else grade = 3;
+                // 适当增加好天赋几率
+
+                if(gradeRandom>=0.2) grade = 0;
+                else if(gradeRandom>=0.06) grade = 1;
+                else if(gradeRandom>=0.02) grade = 2;
                 else grade = 3;
 
                 while(talentList[grade].length == 0) grade--;

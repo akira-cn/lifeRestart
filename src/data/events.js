@@ -1,9 +1,27 @@
 import {map} from '../functions/util.js';
 
 const conAlreadyHaveJob = 'EVT?[100003,100004,100005,100006,100007,100008,100009,100010,100011,100012,100021]';
-const conFemale = 'EVT?[100002]'; // 妹纸
-const conFemale2 = '(EVT?[100002])|(TLT?[2024])'; // 妹纸和女装大佬
+const conFemale = 'EVT?[100002,150023]'; // 妹纸
+const conFemale2 = 'EVT?[100002,150024]'; // 妹纸和女装大佬
 const conMale = 'EVT?[100001]';
+
+const conWorkInGQ = 'EVT?[100008,231001,241001]'; // 国企
+const conWorkInGrant = 'EVT?[100007,231000,231004,241001,241004]';  // 大厂
+const conWorkInGood = 'EVT?[100005,100006,231002,231003,241002,241003]'; // 小厂
+const conWorkINSmall = 'EVT?[100003,100004,100009,100010,100021,700000,231005,241005]'; // 小小厂
+
+// 结局分支
+const gameOver = [
+  "(EVT?[150024])&(EVT?[150020]):90007", // 女装大佬真爱结局
+  "(EVT?[150024])&(EVT?[150023]):90006", // 女装大佬真爱结局2
+  "(MNY>7)&(LCK>5)&(SPR>5):90002", // 意外继承了一大笔遗产
+  "(MNY>7)&(LCK>5):90003", // 意外继承了一大笔遗产2
+  "(MNY>7)&(EVT?[150009]):90005", //主播结局
+  "(MNY>7)&(CHR>5):90004", // 演艺圈结局
+  "STR<-3:90008", // 猝死
+  "STR<0:90001", // 工地搬砖累死
+  "LCK<1000:90000", // 普通结局，去工地搬砖
+];
 
 const eventList = [
   {
@@ -55,70 +73,70 @@ const eventList = [
   },
   {
     id: 900000,
-    event: "你不做程序员了，成为一名快递员。",
+    event: "为了生活，你去工地搬砖了。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900001,
-    event: "你不做程序员了，成为公务员。",
+    event: "为了生活，你在工地搬砖，但是身体不好，出意外死了。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900002,
-    event: "你继承了一大笔遗产，潇洒去了。",
+    event: "你意外继承了一大笔遗产，潇洒去了。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900003,
-    event: "你看破红尘，出家了。",
+    event: "你意外继承了一大笔遗产，收购了公司，天天PUA你原来的LD。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900004,
-    event: "你不幸猝死了。",
+    event: "你离职后用钱整容，进军演艺界，成为了三线明星。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900005,
-    event: "你发现了这个世界的bug，成为了神。",
+    event: "你离职后，继续做主播，成为了著名网红。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900006,
-    event: "你被公司告了，锒铛入狱。",
+    event: "你离职后，一门心思扑在家庭上，领养了一对儿女，成为全职妈妈。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900007,
-    event: "你被老板买凶杀了。",
+    event: "你离职后，为了爱情，义无反顾地去了泰国，成为真正的女人，嫁给了他，婚后过上了幸福的生活。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900008,
-    event: "你在走路的时候不小心摔了一跤，死了。",
+    event: "还没等离职流程走完，就猝死在了公司。",
     effect : {
         LIF: -1
     },
     NoRandom: 1
   }, {
     id: 900009,
-    event: "你不做程序员了，成了一名美颜主播。",
+    event: "你不做程序员了，成了一名美妆主播。",
     effect : {
         LIF: -1
     },
@@ -168,6 +186,7 @@ const eventList = [
     include: "SPR>7", // 心态>7 才能加入
     effect: {
         MNY: 0,
+        ENV: "2!",
     },
     exclude: conAlreadyHaveJob,
   }, {
@@ -177,6 +196,7 @@ const eventList = [
     include: "SPR>7", // 心态>7 才能加入
     effect: {
       MNY: 1,
+      ENV: "2!",
     },
     exclude: conAlreadyHaveJob,
   }, {
@@ -186,6 +206,7 @@ const eventList = [
     include: "SPR>6", // 心态>6 才能加入
     effect: {
       MNY: 1,
+      ENV: "3!",
     },
     exclude: conAlreadyHaveJob,
   }, {
@@ -195,6 +216,7 @@ const eventList = [
     include: "(SPR>5)&(INT>4)", // 心态>5，智商>4 才能加入
     effect: {
       MNY: 2,
+      ENV: "3!",
     },
     exclude: conAlreadyHaveJob,
   }, {
@@ -205,6 +227,7 @@ const eventList = [
     include: "INT>5",
     effect: {
       MNY: 3,
+      ENV: "4!",
     },
     exclude: conAlreadyHaveJob,
   }, {
@@ -215,7 +238,8 @@ const eventList = [
     include: "(INT>4)&(CHR>4)",
     effect: {
       MNY: 2,
-      SPR: 1
+      SPR: 1,
+      ENV: "5!",
     },
     exclude: conAlreadyHaveJob,
   }, {
@@ -223,11 +247,17 @@ const eventList = [
     event: "你加入了一家小公司，给大厂做外包。",
     postEvent: "开始工作。",
     exclude: conAlreadyHaveJob,
+    effect: {
+      ENV: "1!",
+    }
   }, {
     id: 100010,
     event: "你加入了一家小公司，给客户定制沙发。",
     postEvent: "开始工作。",
     exclude: conAlreadyHaveJob,
+    effect: {
+      ENV: "1!",
+    }
   }, {
     id: 100011,
     event: "你加入了一家私人作坊。",
@@ -235,7 +265,8 @@ const eventList = [
     exclude: conAlreadyHaveJob,
     effect: {
       MNY: -1,
-      SPR: -1
+      SPR: -1,
+      ENV: "1!",
     }
   }, {
     id: 100021,
@@ -244,7 +275,8 @@ const eventList = [
     exclude: conAlreadyHaveJob,
     effect: {
       MNY: 1,
-      SPR: 1
+      SPR: 1,
+      ENV: "1!",
     },
     branch: [
       "(EVT?[100001,100002])&(LCK<-3):800001"
@@ -296,9 +328,7 @@ const eventList = [
         MNY: -1,
         SPR: -1
     },
-    branch: [
-        "EVT?[100001,100002]:900000"
-    ]
+    branch: gameOver
   }, {
     id: 999999,
     event: "工作强度太大，猝死了。",
@@ -401,6 +431,7 @@ const eventList = [
         "CHR>6:130002"
     ]
   }, {
+    // 特殊结局，抢月饼
     id: 130001,
     event: "你因为抢月饼，被开除了。",
     effect : {
@@ -486,14 +517,14 @@ const eventList = [
     event: "你今天精心画了一个仙女妆，心情超好。",
     include: `(CHR>6)&(${conFemale2})`,
     branch: [
-      "TLT?[2024]:151000"
+      "EVT?[150024]:153000"
     ],
     effect: {
       SPR: 1,
     }
   },
   {
-    id: 151000,
+    id: 153000,
     event: "身边的同事惊呆了。"
   },
   {
@@ -507,19 +538,19 @@ const eventList = [
   }, {
     id: 150004,
     event: "越来越多的同事把你当做女生来对待。",
-    include: `(CHR>5)&(TLT?[2024])`,
+    include: `(CHR>5)&(EVT?[150024])`,
   }, {
     id: 150005,
     event: "你身边的同事怀疑并私下讨论你的真实性别。",
-    include: `(CHR>6)&(TLT?[2024])`,
+    include: `(CHR>6)&(EVT?[150024])`,
   }, {
     id: 150006,
     event: "你身边的同事打赌你其实是女扮男装，赔率已经接近1比100。",
-    include: `(CHR>7)&(TLT?[2024])`,
+    include: `(CHR>7)&(EVT?[150024])`,
   }, {
     id: 150007,
     event: "有男同事频频对你献殷勤。",
-    include: `(CHR>7)&(TLT?[2024])`,
+    include: `(CHR>7)&(EVT?[150024])`,
   }, {
     id: 150008,
     event: "你的化妆技术越来越好了",
@@ -580,14 +611,77 @@ const eventList = [
     include: `(CHR>4)&(${conFemale2})`,
   }, {
     id: 150018,
-    event: "因为长期穿高跟鞋，你的脚踝受了伤",
+    event: "因为你的高跟鞋磨脚，脚踝受了伤",
     include: `(CHR>4)&(${conFemale2})`,
     exclude: "EVT?[150018]",
     effect: {
       STR: -1,
     }
   },
+  {
+    id: 150019,
+    event: "一位风度翩翩，家境优越的男子向你发起猛烈追求。",
+    include: `(CHR>4)&(${conFemale2})`,
+    exclude: "EVT?[150019]",
+    branch: [
+      "LCK>5:151002",
+      "LCK>0:151001",
+      "LCK<=0:151000",
+    ],
+  },
+  {
+    id: 150020,
+    event: "经过一段时间的交往，你和他的感情加深了。",
+    include: "EVT?[151002]",
+    exclude: "EVT?[150020,220000]",
+  },
+  {
+    id: 150021,
+    event: "你爱他已经爱得轰轰烈烈，难舍难分。",
+    include: "EVT?[150020]",
+    exclude: "EVT?[150021,220000]",
+  },
+  {
+    id: 150022,
+    event: "为了爱情，你犹豫着要不要做一个大胆的决定。",
+    include: "(EVT?[150024])&(EVT?[150021])",
+    exclude: "EVT?[150022,220000]",
+  },
+  {
+    id: 150023,
+    event: "你终于义无反顾，去了泰国，成为完整的女人。",
+    postEvent: "你的几个好闺蜜支持你做出这个决定。",
+    include: "(EVT?[150024])&(EVT?[150022])",
+    exclude: "EVT?[150023,220000]",
+  },
+  {
+    id: 151000,
+    event: "不是你喜欢的类型，你婉拒了他。"
+  },
+  {
+    id: 151001,
+    event: "你有点心动，但还是拒绝了他。"
+  },
+  {
+    id: 151002,
+    event: "你有点小窃喜，打算交往一段时间看看。"
+  },
+  {
+    id: 150024,
+    event: "你决定出柜，日常穿女装上班。",
+    include: "(CHR>5)&(TLT?[2024])",
+    exclude: "EVT?[150024]",
+    effect: {
+      SPR: 1,
+    }
+  },
   // ---- 智商事件 -----
+  {
+    id: 160000,
+    event: "你的工作能力让同事感到敬佩。",
+    exclude: "EVT?[160000]",
+    include: "INT>6",
+  },
 
   // ---- 收入事件 -----
 
@@ -599,13 +693,12 @@ const eventList = [
   {
     id: 220000,
     event: "你结婚了，有了自己的家庭。", 
-    include: "AGE<25",
     exclude: "EVT?[220000]",
   }, {
     id: 220001,
     event: "你的妻子告诉你她怀孕了。",
     include: "(EVT?[100001])&(EVT?[220000])",
-    exclude: "(PRG>0)|(PRG<0)|(EVT?[220001])",
+    exclude: "(PRG>0)|(PRG<0)|(EVT?[220001])|(EVT?[150023])",
     effect: {
       PRG: 1
     }
@@ -666,14 +759,15 @@ const eventList = [
   }, {
     id: 220009,
     event: "你向公司申请了产假。",
-    include: "PRG=8",
+    include: "(EVT?[100002])&(PRG=8)",
     effect: {
       SPR: 1,
     }
   }, {
     id: 220010,
     event: "休产假中...",
-    include: "(PRG>8)|(PRG<0)",
+    include: "(EVT?[100002])&(PRG>8|PRG<0)",
+    exclude: "PRG>9",
     effect: {
       SPR: 1,
     },
@@ -706,6 +800,276 @@ const eventList = [
     exclude: "EVT?[221000]",
     effect: {
       SPR: -1
+    }
+  },
+  // 跳槽 && 结局
+  {
+    id: 230000,
+    event: "你觉得在这家公司干得实在太累了，打算跳槽。",
+    include: "(WRK>3)&(STR<3)",
+    branch: [
+      "LCK>7:231000",
+      "LCK>5:231001",
+      "LCK>3:231002",
+      "LCK>0:231003",
+      "LCK>-3:231004",
+      "LCK>-5:231005",
+      "LCK>-7:231006",
+      "LCK<=-7:231007",
+    ]
+  },
+  {
+    id: 230001,
+    event: "你觉得在这家公司干得不开心，打算跳槽。",
+    include: "(WRK>3)&(SPR<3)",
+    branch: [
+      "LCK>7:241000",
+      "LCK>5:241001",
+      "LCK>3:241002",
+      "LCK>0:241003",
+      "LCK>-3:241004",
+      "LCK>-5:241005",
+      "LCK>-7:241006",
+      "LCK<=-7:241007",
+    ]
+  },
+  {
+    id: 230002,
+    event: "你入不敷出，干不下去了。",
+    include: "(WRK>3)&(MNY<-2)",
+    branch: gameOver,
+  },
+  {
+    id: 230003,
+    event: "你的身体实在受不了，干不下去了。",
+    include: "(WRK>3)&(STR<-2)",
+    branch: gameOver,
+  },
+  {
+    id: 230004,
+    event: "你精神抑郁，干不下去了。",
+    include: "(WRK>3)&(STR<-2)",
+    branch: gameOver,
+  },
+  {
+    id: 230005,
+    event: "你在这家公司呆久了，觉得无聊，准备跳槽。",
+    include: "WRK>30",
+    branch: [
+      "LCK>7:241000",
+      "LCK>5:241001",
+      "LCK>3:241002",
+      "LCK>0:241003",
+      "LCK>-3:241004",
+      "LCK>-5:241005",
+      "LCK>-7:241006",
+      "LCK<=-7:241007",
+    ]
+  },
+  {
+    id: 231000,
+    event: "你换到一家大公司，涨了薪水，也不那么累了。",
+    effect: {
+      STR: 2,
+      MNY: 1,
+      WRK: "0!",
+      ENV: "3!",
+    }
+  }, {
+    id: 231001,
+    event: "你换到一家国企，钱虽然少了，但轻松了不少。",
+    effect: {
+      STR: 3,
+      MNY: -1,
+      WRK: "0!",
+      ENV: "5!",
+    }
+  }, {
+    id: 231002,
+    event: "你换到一家C轮公司，涨了一点薪水。",
+    effect: {
+      STR: 1,
+      MNY: 1,
+      WRK: "0!",
+      ENV: "3!",
+    }
+  }, {
+    id: 231003,
+    event: "你换到一家B轮公司，薪水基本没涨。",
+    effect: {
+      STR: 1,
+      WRK: "0!",
+      ENV: "2!",
+    }
+  }, {
+    id: 231004,
+    event: "为了发展，你降薪去了一家大公司。",
+    effect: {
+      STR: 1,
+      MNY: -1,
+      WRK: "0!",
+      ENV: "3!",
+    }
+  }, {
+    id: 231005,
+    event: "你发现工作没那么好找，你被迫降薪去了一家小公司。",
+    effect: {
+      STR: 1,
+      MNY: -2,
+      WRK: "0!",
+      ENV: "1!",
+    }
+  }, {
+    id: 231006,
+    event: "你没找到满意的工作，只好又回到原公司，还被降薪了。",
+    effect: {
+      STR: 1,
+      MNY: -2,
+      WRK: "0!",
+    }
+  }, {
+    id: 231007,
+    event: "你找不到工作，原公司也不要你，无奈离开了软件行业。",
+    branch: gameOver,
+  },
+  {
+    id: 241000,
+    event: "你换到一家大公司，涨了薪水，也不那么累了。",
+    effect: {
+      SPR: 2,
+      MNY: 1,
+      WRK: "0!",
+      ENV: "4!",
+    }
+  }, {
+    id: 241001,
+    event: "你换到一家国企，钱虽然少了，但轻松了不少。",
+    effect: {
+      SPR: 3,
+      MNY: -1,
+      WRK: "0!",
+      ENV: "5!",
+    }
+  }, {
+    id: 241002,
+    event: "你换到一家C轮公司，涨了一点薪水。",
+    effect: {
+      SPR: 1,
+      MNY: 1,
+      WRK: "0!",
+      ENV: "3!",
+    }
+  }, {
+    id: 241003,
+    event: "你换到一家B轮公司，薪水基本没涨。",
+    effect: {
+      SPR: 1,
+      WRK: "0!",
+      ENV: "2!",
+    }
+  }, {
+    id: 241004,
+    event: "为了发展，你降薪去了一家大公司。",
+    effect: {
+      SPR: 1,
+      MNY: -1,
+      WRK: "0!",
+      ENV: "3!",
+    }
+  }, {
+    id: 241005,
+    event: "你发现工作没那么好找，你被迫降薪去了一家小公司。",
+    effect: {
+      SPR: 1,
+      MNY: -2,
+      WRK: "0!",
+      ENV: "1!",
+    }
+  }, {
+    id: 241006,
+    event: "你没找到满意的工作，只好又回到原公司，还被降薪了。",
+    effect: {
+      SPR: 1,
+      MNY: -2,
+      WRK: "0!",
+    }
+  }, {
+    id: 241007,
+    event: "你找不到工作，原公司也不要你，无奈离开了软件行业。",
+    branch: gameOver
+  },
+  // --------------- 工作相关 ---------------
+  {
+    id: 300000,
+    event: "LD通知你周六加班。",
+    exclude: "ENV=5",
+    effect: {
+      SPR: -1,
+    }
+  }, {
+    id: 300001,
+    event: "连续通宵了三个晚上，身体有些吃不消。",
+    exclude: "ENV=5",
+    effect: {
+      STR: -1,
+    }
+  }, {
+    id: 300002,
+    event: "工作之余去健身。",
+    exclude: "ENV=1",
+    effect: {
+      STR: 1,
+    }
+  }, {
+    id: 300003,
+    event: "LD组织团建，去做了全套SPA。",
+    exclude: "ENV=1",
+    effect: {
+      SPR: 1,
+    }
+  }, {
+    id: 300004,
+    event: "公司里有许多好看的妹纸，每天工作心情愉悦。",
+    effect: {
+      SPR: 1,
+    }
+  }, {
+    id: 300005,
+    event: "和PM大吵了一架。",
+    effect: {
+      SPR: -1,
+    }
+  },  {
+    id: 300006,
+    event: "新需求的文档乱得很，看得你头昏脑胀。",
+    exclude: "ENV>3",
+    effect: {
+      INT: -1,
+    }
+  }, {
+    id: 300007,
+    event: "这周要集体加班，你推掉了周末的约会。",
+    exclude: "ENV=5",
+    effect: {
+      SPR: -1,
+    }
+  }, {
+    id: 300008,
+    event: "你写出了一个严重bug，被扣掉了一部分奖金。",
+    effect: {
+      MNY: -1,
+    }
+  }, {
+    id: 300009,
+    event: "这个月项目完成得不错，LD给了你额外奖金。",
+    effect: {
+      MNY: 1,
+    }
+  }, {
+    id: 300010,
+    event: "你写错了一个逻辑分支，歪打正着解决了一个陈年的bug。",
+    effect: {
+      SPR: 1,
     }
   }
 ];

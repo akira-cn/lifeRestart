@@ -81,6 +81,12 @@ const evtCHR = [
   150016,
   150017,
   150018,
+  150019,
+  150020,
+  150021,
+  150022,
+  150023,
+  "150024*5",
 ];
 
 // 家庭事件
@@ -88,17 +94,51 @@ const evtFamily = [
   220000,
   220001,
   220002,
-  220003,
-  220004,
+  "220003*10000",
+  "220004*10000",
   220005,
   220006,
   220007,
   220008,
   "220009*10000",
-  "220010*10000",
+  "220010*10000", // 休产假
   220015,
   220016,
   220017,
+];
+
+// 跳槽事件
+const evtJump = [
+  230000,
+  230001,
+  230002,
+  230003,
+  230004,
+  230005,
+];
+
+// 工作事件
+const evtWork = [
+  300000,
+  300001,
+  300002,
+  300003,
+  300004,
+  300005,
+  300006,
+  300007,
+  300008,
+  300009,
+];
+
+const evtNormal = [
+  ...evtStartWork,
+  ...evtBootCamp,
+  ...evtUseless,
+  ...evtCHR,
+  ...evtFamily,
+  ...evtJump,
+  ...evtWork,
 ];
 
 const ageList = [
@@ -129,11 +169,7 @@ const ageList = [
   }, {
     age: 4,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
+      ...evtNormal,
       120001,
       120002,
       120003
@@ -141,11 +177,7 @@ const ageList = [
   }, {
     age: 5,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
+      ...evtNormal,
       120001,
       120002,
       120003
@@ -153,11 +185,7 @@ const ageList = [
   }, {
     age: 6,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
+      ...evtNormal,
       120001,
       120002,
       120003
@@ -165,11 +193,7 @@ const ageList = [
   }, {
     age: 7,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
+      ...evtNormal,
       120001,
       120002,
       120003
@@ -177,11 +201,7 @@ const ageList = [
   }, {
     age: 8,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
+      ...evtNormal,
       120001,
       120002,
       120003
@@ -189,12 +209,8 @@ const ageList = [
   }, {
     age: 9,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
+      ...evtNormal,
       ...evtMooncake,
-      ...evtFamily,
       120001,
       120002,
       120003,
@@ -202,11 +218,7 @@ const ageList = [
   }, {
     age: 10,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
+      ...evtNormal,
       120001,
       120002,
       120003,
@@ -214,11 +226,7 @@ const ageList = [
   }, {
     age: 11,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
+      ...evtNormal,
       120001,
       120002,
       120003,
@@ -226,164 +234,13 @@ const ageList = [
   }, {
     age: 12,
     event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
+      ...evtNormal,
       120001,
       120002,
       120003,
     ]
   }, 
-  // 第二年
-  {
-    age: 13,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  }, {
-    age: 14,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 15,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      ...evtAcceptTask,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 16,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 17,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 18,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 19,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 20,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 21,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtMooncake,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 22,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 23,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  },{
-    age: 24,
-    event: [
-      ...evtStartWork,
-      ...evtBootCamp,
-      ...evtUseless,
-      ...evtCHR,
-      ...evtFamily,
-      120001,
-      120002,
-      120003,
-    ]
-  }, 
+  ...generateEachYear(30),
   // 结束
   {
     age: 600,
@@ -393,5 +250,114 @@ const ageList = [
     ]
   }
 ];
+
+function generateEachYear(n = 10) {
+  const ret = [];
+  for(let i = 1; i < n; i++) {
+    ret.push(...[
+      // 第二年
+      {
+        age: i * 12 + 1,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      }, {
+        age: i * 12 + 2,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 3,
+        event: [
+          ...evtNormal,
+          ...evtAcceptTask,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 4,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 5,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 6,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 7,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 8,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 9,
+        event: [
+          ...evtNormal,
+          ...evtMooncake,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 10,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 11,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },{
+        age: i * 12 + 12,
+        event: [
+          ...evtNormal,
+          120001,
+          120002,
+          120003,
+        ]
+      },
+    ]);
+  }
+  return ret;
+}
 
 export const age = map(ageList);
