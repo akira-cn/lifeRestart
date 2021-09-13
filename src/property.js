@@ -15,6 +15,7 @@ class Property {
         TLT: "TLT", // 天赋 talent TLT
         EVT: "EVT", // 事件 event EVT
         TMS: "TMS", // 次数 times TMS
+        BLCK: "BLCK", // 基础运气
         LCK: "LCK", // 运气 luck LCK，隐藏属性，从-10到10随机变化
         WRK: "WRK", // 司龄 work WRK
         PRG: "PRG", // 怀孕状态
@@ -85,7 +86,8 @@ class Property {
             [this.TYPES.STR]: 0,
             [this.TYPES.MNY]: 0,
             [this.TYPES.SPR]: 0,
-            [this.TYPES.LCK]: 0,
+            [this.TYPES.BLCK]: 0,
+            [this.TYPES.LCK]: Math.floor(20 * Math.random()) - 10,
             [this.TYPES.WRK]: 0,
             [this.TYPES.PRG]: 0,
             [this.TYPES.ENV]: 0,
@@ -142,9 +144,10 @@ class Property {
             case this.TYPES.WRK:
             case this.TYPES.PRG:
             case this.TYPES.ENV:
-                return clone(this.#data[prop]);
+            case this.TYPES.BLCK:
             case this.TYPES.LCK:
-                return this.#data[prop] + Math.floor(20 * Math.random()) - 10;
+                return clone(this.#data[prop]);
+                // return this.#data[prop] + Math.floor(20 * Math.random()) - 10;
             case this.TYPES.LAGE:
             case this.TYPES.LCHR:
             case this.TYPES.LINT:
@@ -224,6 +227,7 @@ class Property {
             case this.TYPES.TLT:
             case this.TYPES.EVT:
             case this.TYPES.LCK:
+            case this.TYPES.BLCK:
             case this.TYPES.WRK:
             case this.TYPES.PRG:
             case this.TYPES.ENV:
@@ -266,6 +270,7 @@ class Property {
             case this.TYPES.SPR:
             case this.TYPES.LIF:
             case this.TYPES.LCK:
+            case this.TYPES.BLCK:
             case this.TYPES.WRK:
             case this.TYPES.PRG:
                 this.hl(prop, this.#data[prop] += Number(value));
@@ -310,6 +315,8 @@ class Property {
         this.change(this.TYPES.WRK, 1);
         const age = this.get(this.TYPES.AGE);
         const prg = this.get(this.TYPES.PRG);
+        const lck = this.get(this.TYPES.BLCK) + Math.floor(20 * Math.random()) - 10;
+        this.set(this.TYPES.LCK, lck);
         if(prg) {
             this.change(this.TYPES.PRG, 1);
         }

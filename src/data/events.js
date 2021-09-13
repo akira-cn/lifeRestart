@@ -358,7 +358,7 @@ const eventList = [
         MNY: 1
     },
     include: "INT>5",
-    exclude: "EVT?[100006, 100007, 100008]" // 大厂不会随便给人涨工资
+    exclude: "ENV>2" // 大厂不会随便给人涨工资
   }, {
     id: 120002,
     event: "你努力工作"
@@ -449,13 +449,13 @@ const eventList = [
     id: 140002,
     event: "你左眼不停地跳，觉得可能有财运降临。",
     effect: {
-      LCK: 1
+      BLCK: 1
     }
   }, {
     id: 140003,
     event: "你右眼不停地跳，最近可能得小心一些。",
     effect: {
-      LCK: -1,
+      BLCK: -1,
     }
   }, {
     id: 140004,
@@ -540,18 +540,21 @@ const eventList = [
     id: 150004,
     event: "越来越多的同事把你当做女生来对待。",
     include: `(CHR>5)&(EVT?[150024])`,
+    exclude: 'EVT?[150023]'
   }, {
     id: 150005,
     event: "你身边的同事怀疑并私下讨论你的真实性别。",
     include: `(CHR>6)&(EVT?[150024])`,
+    exclude: 'EVT?[150023]'
   }, {
     id: 150006,
     event: "你身边的同事打赌你其实是女扮男装，赔率已经接近1比100。",
     include: `(CHR>7)&(EVT?[150024])`,
+    exclude: 'EVT?[150023]'
   }, {
     id: 150007,
     event: "有男同事频频对你献殷勤。",
-    include: `(CHR>7)&(EVT?[150024])`,
+    include: `(CHR>7)&(EVT?[150024,100002])`,
   }, {
     id: 150008,
     event: "你的化妆技术越来越好了",
@@ -595,6 +598,7 @@ const eventList = [
     id: 150014,
     event: "有女同事频频对你献殷勤。",
     include: `(CHR>7)&${conMale}`,
+    exclude: 'EVT?[150023]'
   }, {
     id: 150015,
     event: "你去整容，颜值进一步提升",
@@ -627,8 +631,11 @@ const eventList = [
     branch: [
       "LCK>5:151002",
       "LCK>0:151001",
-      "LCK<=0:151000",
+      "LCK<1:151000",
     ],
+    // hook(prop) {
+    //   console.log('>', prop.get('LCK'));
+    // }
   },
   {
     id: 150020,
@@ -650,7 +657,7 @@ const eventList = [
   },
   {
     id: 150023,
-    event: "你终于义无反顾，去了泰国，成为完整的女人。",
+    event: "你终于义无反顾，去了泰国，成为完整的女人，嫁给了爱你的那个人。",
     postEvent: "你的几个好闺蜜支持你做出这个决定。",
     include: "(EVT?[150024])&(EVT?[150022])",
     exclude: "EVT?[150023,220000]",
@@ -694,7 +701,7 @@ const eventList = [
   {
     id: 220000,
     event: "你结婚了，有了自己的家庭。", 
-    exclude: "EVT?[220000]",
+    exclude: "EVT?[220000,150021]",
   }, {
     id: 220001,
     event: "你的妻子告诉你她怀孕了。",
@@ -848,8 +855,8 @@ const eventList = [
   },
   {
     id: 230004,
-    event: "你精神抑郁，干不下去了。",
-    include: "(WRK>3)&(STR<-2)",
+    event: "你精神抑郁，不想干了。",
+    include: "(WRK>3)&(SPR<-2)",
     branch: gameOver,
   },
   {
@@ -1072,7 +1079,58 @@ const eventList = [
     effect: {
       SPR: 1,
     }
+  }, {
+    id: 300011,
+    event: "每天有开不完的会，你觉得很烦。",
+    include: "ENV>3",
+    effect: {
+      SPR: -1,
+    }
+  }, {
+    id: 300012,
+    event: "你的LD没什么本事，却经常PUA你。",
+    effect: {
+      SPR: -1,
+    }
+  }, {
+    id: 300013,
+    event: "你觉得在这家公司里学不到什么东西了。",
+    include: "WRK>15",
+    effect: {
+      SPR: -1,
+    }
+  },
+  // 工资、经济
+  {
+    id: 400000,
+    event: "公司普调，给你涨了一点薪水。",
+    exclude: "(WRK<6)|(ENV<3)",
+    effect: {
+      MNY: 1,
+    }
+  }, {
+    id: 400001,
+    event: "你今年的绩效不错，公司给你涨了许多薪水。",
+    exclude: "(WRK<6)|(ENV<3)|(INT>4)",
+    effect: {
+      MNY: 2,
+    },
+  }, {
+    id: 400002,
+    event: "你今年的绩效不理想，但是公司还是你涨了一点薪水。",
+    exclude: "(WRK<6)|(ENV<3)",
+    effect: {
+      MNY: 1,
+    },
+  }, {
+    id: 400003,
+    event: "你今年的绩效不理想，公司没有给你涨薪水。",
+    exclude: "(WRK<6)|(ENV<3)",
+    effect: {
+      MNY: 1,
+    },
   }
+  // TODO: 结婚后开销越来越大，有孩子后开销越来越大
 ];
 
 export const events = map(eventList);
