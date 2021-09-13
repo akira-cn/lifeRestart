@@ -703,6 +703,7 @@ const eventList = [
   {
     id: 221000,
     event: "你听说同事接手了原本你负责的比较重要的工作。",
+    exclude: "EVT?[221000]",
     effect: {
       SPR: -1
     }
