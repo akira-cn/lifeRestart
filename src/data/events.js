@@ -532,6 +532,7 @@ const eventList = [
     id: 150009,
     event: "你开始兼职做颜值主播",
     include: "CHR>6",
+    exclude: "EVT?[150009]"
   }, {
     id: 150010,
     event: "你做颜值主播粉丝增长迅速",
@@ -547,6 +548,7 @@ const eventList = [
     id: 150012,
     event: "你是平台当红主播，粉丝打赏收入超过你的薪水",
     include: "(CHR>8)&(EVT?[150009])",
+    exclude: "EVT?[150012]",
     effect: {
       MNY: 2,
     }
