@@ -269,6 +269,7 @@ const ageList = [
       ...evtUseless,
       ...evtCHR,
       ...evtFamily,
+      ...evtAcceptTask,
       120001,
       120002,
       120003,
