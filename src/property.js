@@ -9,12 +9,15 @@ class Property {
         CHR: "CHR", // 颜值 charm CHR
         INT: "INT", // 智力 intelligence INT
         STR: "STR", // 体质 strength STR
-        MNY: "MNY", // 家境 money MNY
-        SPR: "SPR", // 快乐 spirit SPR
+        MNY: "MNY", // 收入 money MNY
+        SPR: "SPR", // 心态 spirit SPR
         LIF: "LIF", // 生命 life LIFE
         TLT: "TLT", // 天赋 talent TLT
         EVT: "EVT", // 事件 event EVT
         TMS: "TMS", // 次数 times TMS
+        LCK: "LCK", // 运气 luck LCK，隐藏属性，从-10到10随机变化
+        WRK: "WRK", // 司龄 work WRK
+        PRG: "PRG", // 怀孕状态
 
         // Auto calc
         LAGE: "LAGE", // 最低年龄 Low Age
@@ -81,6 +84,9 @@ class Property {
             [this.TYPES.STR]: 0,
             [this.TYPES.MNY]: 0,
             [this.TYPES.SPR]: 0,
+            [this.TYPES.LCK]: 0,
+            [this.TYPES.WRK]: 0,
+            [this.TYPES.PRG]: 0,
 
             [this.TYPES.LIF]: 1,
 
@@ -131,7 +137,11 @@ class Property {
             case this.TYPES.LIF:
             case this.TYPES.TLT:
             case this.TYPES.EVT:
+            case this.TYPES.WRK:
+            case this.TYPES.PRG:
                 return clone(this.#data[prop]);
+            case this.TYPES.LCK:
+                return this.#data[prop] + Math.floor(20 * Math.random()) - 10;
             case this.TYPES.LAGE:
             case this.TYPES.LCHR:
             case this.TYPES.LINT:
@@ -210,6 +220,9 @@ class Property {
             case this.TYPES.LIF:
             case this.TYPES.TLT:
             case this.TYPES.EVT:
+            case this.TYPES.LCK:
+            case this.TYPES.WRK:
+            case this.TYPES.PRG:
                 this.hl(prop, this.#data[prop] = clone(value));
                 this.achieve(prop, value);
                 return;
@@ -248,6 +261,9 @@ class Property {
             case this.TYPES.MNY:
             case this.TYPES.SPR:
             case this.TYPES.LIF:
+            case this.TYPES.LCK:
+            case this.TYPES.WRK:
+            case this.TYPES.PRG:
                 this.hl(prop, this.#data[prop] += Number(value));
                 return;
             case this.TYPES.TLT:
@@ -271,8 +287,14 @@ class Property {
     }
 
     effect(effects) {
-        for(const prop in effects)
-            this.change(prop, Number(effects[prop]));
+        for(const prop in effects) {
+            const effect = effects[prop];
+            if(/!$/.test(effect)) {
+                this.set(prop, parseInt(effect, 10));
+            } else {
+                this.change(prop, Number(effects[prop]));
+            }
+        }
     }
 
     isEnd() {
@@ -281,9 +303,19 @@ class Property {
 
     ageNext() {
         this.change(this.TYPES.AGE, 1);
+        this.change(this.TYPES.WRK, 1);
         const age = this.get(this.TYPES.AGE);
-        const {event, talent} = this.getAgeData(age);
-        return {age, event, talent};
+        const prg = this.get(this.TYPES.PRG);
+        if(prg) {
+            this.change(this.TYPES.PRG, 1);
+        }
+        const data = this.getAgeData(age);
+        if(data) {
+            const {event, talent} = data;
+            return {age, event, talent};
+        } else {
+            return this.ageNext();
+        }
     }
 
     getAgeData(age) {

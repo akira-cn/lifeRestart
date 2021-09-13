@@ -361,8 +361,8 @@ const talentList = [
     grade: 2
   }, {
     id: 1048,
-    name: "神秘的小盒子",
-    description: "工作满10年时才能开启",
+    name: "平行世界",
+    description: "科学家可能会发现平行世界",
     grade: 3
   }, {
     id: 1049,

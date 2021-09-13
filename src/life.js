@@ -51,6 +51,8 @@ class Life {
         const {age, event, talent} = this.#property.ageNext();
 
         const talentContent = this.doTalent(talent);
+        console.log(this.#property.get('WRK'));
+
         const eventContent = this.doEvent(this.random(event));
 
         const isEnd = this.#property.isEnd();
@@ -87,7 +89,7 @@ class Life {
     }
 
     doEvent(eventId) {
-        const { effect, next, description, postEvent } = this.#event.do(eventId, this.#property);
+        const { effect, next, description, postEvent, hook } = this.#event.do(eventId, this.#property);
         this.#property.change(this.#property.TYPES.EVT, eventId);
         this.#property.effect(effect);
         const content = {
@@ -96,6 +98,10 @@ class Life {
             postEvent,
         }
         if(next) return [content, this.doEvent(next)].flat();
+        // add hook
+        if(hook) {
+            hook(this.#property, content);
+        }
         return [content];
     }
 

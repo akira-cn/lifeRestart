@@ -39,8 +39,6 @@ const evtAcceptTask = [
 // 月饼事件，每年九月份触发
 const evtMooncake = [
   130000,
-  130001,
-  130002,
 ];
 
 // 一些无聊的随机事件
@@ -55,6 +53,52 @@ const evtUseless = [
   140008,
   140009,
   140010,
+  140011,
+  140012,
+  140013,
+  140014,
+  140015,
+];
+
+// 颜值事件
+const evtCHR = [
+  150000,
+  150001,
+  150002,
+  150003,
+  150004,
+  150005,
+  150006,
+  150007,
+  150008,
+  150009,
+  150010,
+  150011,
+  150012,
+  150013,
+  150014,
+  150015,
+  150016,
+  150017,
+  150018,
+];
+
+// 家庭事件
+const evtFamily = [
+  220000,
+  220001,
+  220002,
+  220003,
+  220004,
+  220005,
+  220006,
+  220007,
+  220008,
+  "220009*10000",
+  "220010*10000",
+  220015,
+  220016,
+  220017,
 ];
 
 const ageList = [
@@ -80,7 +124,7 @@ const ageList = [
     event: [
       ...evtStartWork,
       ...evtBootCamp,
-      ...evtAcceptTask
+      ...evtAcceptTask,
     ]
   }, {
     age: 4,
@@ -88,6 +132,8 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003
@@ -98,6 +144,8 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003
@@ -108,6 +156,8 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003
@@ -118,6 +168,8 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003
@@ -128,6 +180,8 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003
@@ -138,10 +192,12 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtMooncake,
+      ...evtFamily,
       120001,
       120002,
       120003,
-      130000
     ]
   }, {
     age: 10,
@@ -149,6 +205,8 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003,
@@ -159,6 +217,8 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003,
@@ -169,6 +229,8 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003,
@@ -181,11 +243,148 @@ const ageList = [
       ...evtStartWork,
       ...evtBootCamp,
       ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
       120001,
       120002,
       120003,
     ]
   }, {
+    age: 14,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 15,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 16,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 17,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 18,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 19,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 20,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 21,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtMooncake,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 22,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 23,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  },{
+    age: 24,
+    event: [
+      ...evtStartWork,
+      ...evtBootCamp,
+      ...evtUseless,
+      ...evtCHR,
+      ...evtFamily,
+      120001,
+      120002,
+      120003,
+    ]
+  }, 
+  // 结束
+  {
     age: 600,
     event: [
       999999,

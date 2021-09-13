@@ -31,7 +31,7 @@ function average(...arr) {
 function map(arr) {
     const map = {};
     arr.forEach((data, i) => {
-        const id = data.id != null ? data.id : i;
+        const id = data.id != null ? data.id : data.age != null ? data.age : i;
         if(map[id]) throw new Error(`Duplicated ID. ${id}`);
         map[id] = data;
     });
