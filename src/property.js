@@ -20,6 +20,7 @@ class Property {
         WRK: "WRK", // 司龄 work WRK
         PRG: "PRG", // 怀孕状态
         ENV: "ENV", // 工作环境 1-很差 2-小厂 3-大厂 4-垄断企业 5-国企
+        JMP: "JMP", // 跳槽次数
 
         // Auto calc
         LAGE: "LAGE", // 最低年龄 Low Age
@@ -34,6 +35,8 @@ class Property {
         HMNY: "HMNY", // 最高家境 High Money
         LSPR: "LSPR", // 最低快乐 Low Spirit
         HSPR: "HSPR", // 最高快乐 High Spirit
+        LWRK: "LWRK", // 最低司龄
+        HWRK: "HWRK", // 最高司龄
 
         SUM: "SUM", // 总评 summary SUM
 
@@ -91,6 +94,7 @@ class Property {
             [this.TYPES.WRK]: 0,
             [this.TYPES.PRG]: 0,
             [this.TYPES.ENV]: 0,
+            [this.TYPES.JMP]: 0,
 
             [this.TYPES.LIF]: 1,
 
@@ -122,12 +126,15 @@ class Property {
         this.#data[this.TYPES.LSTR] = this.get(this.TYPES.STR);
         this.#data[this.TYPES.LSPR] = this.get(this.TYPES.SPR);
         this.#data[this.TYPES.LMNY] = this.get(this.TYPES.MNY);
+        this.#data[this.TYPES.LWRK] = this.get(this.TYPES.WRK);
+
         this.#data[this.TYPES.HAGE] = this.get(this.TYPES.AGE);
         this.#data[this.TYPES.HCHR] = this.get(this.TYPES.CHR);
         this.#data[this.TYPES.HINT] = this.get(this.TYPES.INT);
         this.#data[this.TYPES.HSTR] = this.get(this.TYPES.STR);
         this.#data[this.TYPES.HMNY] = this.get(this.TYPES.MNY);
         this.#data[this.TYPES.HSPR] = this.get(this.TYPES.SPR);
+        this.#data[this.TYPES.HWRK] = this.get(this.TYPES.WRK);
     }
 
     get(prop) {
@@ -146,6 +153,7 @@ class Property {
             case this.TYPES.ENV:
             case this.TYPES.BLCK:
             case this.TYPES.LCK:
+            case this.TYPES.JMP:
                 return clone(this.#data[prop]);
                 // return this.#data[prop] + Math.floor(20 * Math.random()) - 10;
             case this.TYPES.LAGE:
@@ -154,6 +162,7 @@ class Property {
             case this.TYPES.LSTR:
             case this.TYPES.LMNY:
             case this.TYPES.LSPR:
+            case this.TYPES.LWRK:
                 return min(
                     this.#data[prop],
                     this.get(this.fallback(prop))
@@ -164,6 +173,7 @@ class Property {
             case this.TYPES.HSTR:
             case this.TYPES.HMNY:
             case this.TYPES.HSPR:
+            case this.TYPES.HWRK:
                 return max(
                     this.#data[prop],
                     this.get(this.fallback(prop))
@@ -208,6 +218,8 @@ class Property {
             case this.TYPES.HMNY: return this.TYPES.MNY;
             case this.TYPES.LSPR:
             case this.TYPES.HSPR: return this.TYPES.SPR;
+            case this.TYPES.LWRK:
+            case this.TYPES.HWRK: return this.TYPES.WRK;
             case this.TYPES.CTLT: return this.TYPES.ATLT;
             case this.TYPES.CEVT: return this.TYPES.AEVT;
             case this.TYPES.CACHV: return this.TYPES.ACHV;
@@ -231,6 +243,7 @@ class Property {
             case this.TYPES.WRK:
             case this.TYPES.PRG:
             case this.TYPES.ENV:
+            case this.TYPES.JMP:
                 this.hl(prop, this.#data[prop] = clone(value));
                 this.achieve(prop, value);
                 return;
@@ -273,6 +286,7 @@ class Property {
             case this.TYPES.BLCK:
             case this.TYPES.WRK:
             case this.TYPES.PRG:
+            case this.TYPES.JMP:
                 this.hl(prop, this.#data[prop] += Number(value));
                 return;
             case this.TYPES.TLT:
@@ -342,6 +356,7 @@ class Property {
             case this.TYPES.STR: keys = [this.TYPES.LSTR, this.TYPES.HSTR]; break;
             case this.TYPES.MNY: keys = [this.TYPES.LMNY, this.TYPES.HMNY]; break;
             case this.TYPES.SPR: keys = [this.TYPES.LSPR, this.TYPES.HSPR]; break;
+            case this.TYPES.WRK: keys = [this.TYPES.LWRK, this.TYPES.HWRK]; break;
             default: return;
         }
         const [l, h] = keys;
