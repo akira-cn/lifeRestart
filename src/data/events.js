@@ -892,7 +892,7 @@ const eventList = [
     id: 440001,
     event: '你的颈椎病越来越严重。',
     include: 'EVT?[440000]',
-    exclude: '(TLT?[1044])&(EVT?440001, 440002)',
+    exclude: '(TLT?[1044])&(EVT?[440001,440002])',
     effect: {
       STR: -1,
     }
@@ -900,7 +900,7 @@ const eventList = [
   {
     id: 440002,
     event: '同事送了你一本《颈椎康复指南》。',
-    include: '(TLT?[1037])&(EVT?[440000, 440001])',
+    include: '(TLT?[1037])&(EVT?[440000,440001])',
     effect: {
       STR: 1,
     }
