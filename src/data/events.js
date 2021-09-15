@@ -4,7 +4,7 @@ const conAlreadyHaveJob = 'EVT?[100003,100004,100005,100006,100007,100008,100009
 const conFemale = 'EVT?[100002,150023, 510004]'; // 妹纸
 const conFemale2 = 'EVT?[100002,150023, 510004, 150024]'; // 妹纸和女装大佬
 const conMale = 'EVT?[100001]';
-const conMale2 = 'EVT?[100001, 150024]';
+const conMale2 = 'EVT?[100001,150024]';
 
 const conWorkInGQ = 'EVT?[100008,231001,241001]'; // 国企
 const conWorkInGrant = 'EVT?[100007,231000,231004,241001,241004]';  // 大厂
@@ -742,7 +742,7 @@ const eventList = [
     id: 150008,
     event: "你的化妆技术越来越好了",
     include: conFemale2,
-    exclude: "CHR>7",
+    exclude: "(CHR>7)|(EVT?[150008])",
     effect: {
       CHR: 1,
     }
@@ -883,7 +883,7 @@ const eventList = [
     id: 440000,
     event: '由于长时间坐着工作，你得了颈椎病。',
     include: 'AGE>60',
-    exclude: '(TLT?[1044])&(EVT?[440000])',
+    exclude: '(TLT?[1044])|(EVT?[440000])',
     effect: {
       STR: -1,
     }
@@ -892,7 +892,7 @@ const eventList = [
     id: 440001,
     event: '你的颈椎病越来越严重。',
     include: 'EVT?[440000]',
-    exclude: '(TLT?[1044])&(EVT?[440001,440002])',
+    exclude: '(TLT?[1044])|(EVT?[440001,440002])',
     effect: {
       STR: -1,
     }
@@ -901,6 +901,7 @@ const eventList = [
     id: 440002,
     event: '同事送了你一本《颈椎康复指南》。',
     include: '(TLT?[1037])&(EVT?[440000,440001])',
+    exclude: 'EVT?[440002]',
     effect: {
       STR: 1,
     }
