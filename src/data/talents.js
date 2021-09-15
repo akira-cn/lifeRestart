@@ -439,6 +439,21 @@ const talentList = [
     name: '老油条',
     description: '你被PUA不会影响心态',
     grade: 1,
+  }, {
+    id: 1062,
+    name: '职业规划',
+    condition: "AGE?[36]",
+    description: '毕业3年时智力、心态+1',
+    effect: {
+      INT: 1,
+      SPR: 1,
+    },
+    grade: 1,
+  }, {
+    id: 1063,
+    name: '八卦之神',
+    description: '能够打听到一些有用的小道消息。',
+    grade: 2,
   }
 ];
 
