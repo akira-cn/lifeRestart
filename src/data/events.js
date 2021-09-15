@@ -2114,7 +2114,7 @@ const eventList = [
   {
     id: 1110017,
     event: '经过锻炼和实战打磨，你进化成了二代神体',
-    include: '(EVT?[1110010])&(STR>100)',
+    include: '(EVT?[1110010])&(STR>50)',
     exclude: 'EVT?[1110017]',
     effect: {
       SPR: 10,
@@ -2124,7 +2124,7 @@ const eventList = [
   {
     id: 1110018,
     event: '经过锻炼和实战打磨，你进化成了三代神体',
-    include: '(EVT?[1110010])&(STR>300)',
+    include: '(EVT?[1110010])&(STR>120)',
     exclude: 'EVT?[1110018]',
     effect: {
       SPR: 10,
@@ -2137,8 +2137,8 @@ const eventList = [
     include: '(WRK>120)&(EVT?[1110010])',
     exclude: 'EVT?[1110019]',
     branch: [
-      "STR>300:1111009",
-      "STR>100:1111008",
+      "STR>120:1111009",
+      "STR>50:1111008",
       "STR>-100:1111007"
     ],
   }, {
@@ -2173,8 +2173,8 @@ const eventList = [
     include: 'EVT?[1110022]',
     exclude: 'EVT?[1110023]',
     branch: [
-      "(STR>300)&(INT>50):1111012",
-      "(STR>100)&(INT>20):1111011",
+      "(STR>150)&(INT>70):1111012",
+      "(STR>100)&(INT>40):1111011",
       "(STR>-100):1111010",
     ],
   },
