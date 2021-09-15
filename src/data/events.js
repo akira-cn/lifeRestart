@@ -415,7 +415,7 @@ const eventList = [
       MNY: 3,
       ENV: "4!",
     },
-    exclude: `(${conAlreadyHaveJob})|TLT?[1059]`,
+    exclude: `(${conAlreadyHaveJob})|(TLT?[1059])`,
   }, {
     // 国企看智商和形象
     id: 100008,
@@ -427,7 +427,7 @@ const eventList = [
       SPR: 1,
       ENV: "5!",
     },
-    exclude: `(${conAlreadyHaveJob})|TLT?[1059]`,
+    exclude: `(${conAlreadyHaveJob})|(TLT?[1059])`,
   }, {
     id: 100009,
     event: "你加入了一家小公司，给大厂做外包。",
@@ -476,7 +476,7 @@ const eventList = [
       MNY: -1,
       SPR: -1,
     },
-    exclude: `(INT>3)|${conAlreadyHaveJob}`,
+    exclude: `(INT>3)|(${conAlreadyHaveJob})`,
     branch: [
       "EVT?[100001,100002]:700000"
     ]
@@ -536,7 +536,7 @@ const eventList = [
         INT: 1
     },
     exclude: "EVT?[110001,110002]",
-    include: `(INT>4)&${conAlreadyHaveJob}`,
+    include: `(INT>4)&(${conAlreadyHaveJob})`,
   }, {
     id: 120001,
     event: "LD欣赏你的能力，给你涨了点工资。",
