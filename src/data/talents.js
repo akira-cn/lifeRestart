@@ -421,6 +421,24 @@ const talentList = [
     name: "啃老族",
     description: "即使收入低也能保持好心态",
     grade: 0,
+  }, {
+    id: 1059,
+    name: "自由青年",
+    description: "你不去国企和大公司",
+    grade: 1,
+  }, {
+    id: 1060,
+    name: "天选之人",
+    description: "你的运气比他人好",
+    grade: 2,
+    effect: {
+      LCK: 2
+    }
+  }, {
+    id: 1061,
+    name: '老油条',
+    description: '你被PUA不会影响心态',
+    grade: 1,
   }
 ];
 

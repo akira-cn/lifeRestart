@@ -13,12 +13,14 @@ const conWorkINSmall = 'EVT?[100003,100004,100009,100010,100021,700000,231005,24
 
 // 跳槽分支
 const jump1 = [
-  "LCK>7:241000",
-  "LCK>5:241001",
-  "LCK>3:241002",
+  "(LCK>3)&(TLT?[1059]):241002",
+  "LCK>7:241000", // 大公司
+  "LCK>5:241001", // 国企
+  "LCK>3:241002", // C轮
   "(INT>5)&(LCK>0):241009", // 老板挽留
   "LCK>0:241003", // 不加薪
-  "LCK>-3:241004",  // 降薪
+  "(LCK>-3)&(TLT?[1059]):241005",
+  "LCK>-3:241004",  // 降薪大公司
   "LCK>-5:241005",  // 降薪
   "(INT<4)&(LCK>-7):241006",  // 降薪
   "(INT<4)&(LCK<-6):241007", // 找不到工作
@@ -26,11 +28,13 @@ const jump1 = [
 ];
 
 const jump2 = [
-  "LCK>7:231000",
-  "LCK>5:231001",
-  "LCK>3:231002",
+  "(LCK>3)&(TLT?[1059]):231002",
+  "LCK>7:231000", // 大公司
+  "LCK>5:231001", // 国企
+  "LCK>3:231002", // C轮
   "(INT>5)&(LCK>0):231009", // 老板挽留
   "LCK>0:231003",
+  "(LCK>-3)&(TLT?[1059]):231005",
   "LCK>-3:231004",
   "LCK>-5:231005",
   "(INT<4)(LCK>-7):231006",  // 降薪
@@ -59,7 +63,118 @@ const gameOver = [
   "LCK<1000:900000", // 普通结局，去工地搬砖
 ];
 
+// 退休结局分支
+const retireGameOver = [
+  "INT>10:999100", // 科学家
+  "INT>8:999101", // 特聘教授
+  "INT>5:999102", // 网络作家
+  "(MNY>10&SPR>8):999106",  // 创业
+  "SPR>10:999103", // 哲学家
+  "SPR>8:999104", // 社区红人
+  "(SPR>5&MNY>5):999105", // 旅游
+  "SPR>-10:999107"  // 安享晚年
+];
+
+const retireGameOver2 = [
+  "STR>10:999108", // 身体好，活到了101岁
+  "STR>7:999109", // 身体不错，90多岁无疾而终
+  "STR>4:999110", // 身体不错，80多岁摔跤死亡
+  "STR>0:999111", // 身体还可以，80多岁
+  "STR>-3:999112", // 小病不断，活到79岁
+  "STR>-6:999113", // 5年后查出癌症，2年后去世
+  "STR>-20:999114", // 身体很差，很快就离世
+];
+
 const eventList = [
+  {
+    id: 999100,
+    event: "你退休了，在学术上深入研究，成为了科学家。",
+    branch: retireGameOver2,
+  },
+  {
+    id: 999101,
+    event: "你退休了，一所民办学校返聘你为教授。",
+    branch: retireGameOver2,
+  },
+  {
+    id: 999102,
+    event: "你退休了，因为对创作感兴趣，成为了网络作家。",
+    branch: retireGameOver2,
+  },
+  {
+    id: 999103,
+    event: "你退休了，研究哲学，成为了哲学家。",
+    branch: retireGameOver2,
+  },
+  {
+    id: 999104,
+    event: "你退休了，依然活跃在网络上，成为了社交平台的红人。",
+    branch: retireGameOver2,
+  },
+  {
+    id: 999105,
+    event: "你退休了，去到处旅游，见识大好河山。",
+    branch: retireGameOver2,
+  },
+  {
+    id: 999106,
+    event: "你退休了，但是闲不住，自己创立了一家公司，成为老板。",
+    branch: retireGameOver2,
+  },
+  {
+    id: 999107,
+    event: "你退休了，在家安享晚年。",
+    branch: retireGameOver2,
+  }, {
+    id: 999108,
+    event: "你的身体很好，活到了101岁，无疾而终。",
+    NoRandom: 1,
+    effect: {
+      LIF: -1,
+    },
+  },{
+    id: 999109,
+    event: "你的身体不错，活到了90多岁，在梦中平静离世。",
+    NoRandom: 1,
+    effect: {
+      LIF: -1,
+    },
+  },{
+    id: 999110,
+    event: "你的身体不错，80岁时不小心摔了一跤，之后身体不好，一年多后离世。",
+    NoRandom: 1,
+    effect: {
+      LIF: -1,
+    },
+  },{
+    id: 999111,
+    event: "你的身体还可以，活到了79岁。",
+    NoRandom: 1,
+    effect: {
+      LIF: -1,
+    },
+  },{
+    id: 999112,
+    event: "你小病不断，77岁后离世。",
+    NoRandom: 1,
+    effect: {
+      LIF: -1,
+    },
+  },{
+    id: 999113,
+    event: "退休5年体检，你查出了癌症，2年后医治无效去世。",
+    NoRandom: 1,
+    effect: {
+      LIF: -1,
+    },
+  },{
+    id: 999114,
+    event: "退休后身体不好，留下顽疾，不久之后就去世了。",
+    NoRandom: 1,
+    effect: {
+      LIF: -1,
+    },
+  },
   {
     id: 700000,
     event: "你在好心人的帮助下从传销组织脱身，进了家小公司。",
@@ -300,7 +415,7 @@ const eventList = [
       MNY: 3,
       ENV: "4!",
     },
-    exclude: conAlreadyHaveJob,
+    exclude: `(${conAlreadyHaveJob})|TLT?[1059]`,
   }, {
     // 国企看智商和形象
     id: 100008,
@@ -312,7 +427,7 @@ const eventList = [
       SPR: 1,
       ENV: "5!",
     },
-    exclude: conAlreadyHaveJob,
+    exclude: `(${conAlreadyHaveJob})|TLT?[1059]`,
   }, {
     id: 100009,
     event: "你加入了一家小公司，给大厂做外包。",
@@ -660,7 +775,7 @@ const eventList = [
     event: "你觉得自己更适合做主播，决定转行全职做主播",
     include: "(CHR>8)&(INT<5)&(EVT?[150012])",
     branch: [
-      "EVT?[150012]: 900009"
+      "EVT?[150012]: 900005"
     ]
   }, {
     id: 150014,
@@ -763,8 +878,68 @@ const eventList = [
 
   // ---- 健康事件 -----
 
-  // ---- 心态事件 -----
+  // ---- 晋升事件 -----
 
+  // ---- 心态事件 -----
+  {
+    id: 270000,
+    event: '你觉得自己很丧，情绪低落。',
+    include: 'SPR<1',
+    branch: [
+      "LCK>7:271000"
+    ]
+  },
+  {
+    id: 271000,
+    event: '你请了几天假，调整了心情。',
+    effect: {
+      SPR: 1,
+    }
+  },
+  {
+    id: 271001,
+    event: '你情绪低落，觉得很压抑。',
+    effect: {
+      SPR: -1,
+    } 
+  },
+  {
+    id: 271002,
+    event: '恶劣心情让你气质不佳，颜值受损。',
+    effect: {
+      CHR: -1,
+    }
+  },
+  {
+    id:270001,
+    event: '见你状态不佳，LD和HRBP给你约了心理咨询，帮你调节心情。',
+    include: '(SPR<2)&(ENV>3)',
+    effect: {
+      SPR: 1,
+    }
+  },{
+    id:270002,
+    event: '和同事因为小事无缘无故大吵了一架。',
+    include: 'SPR<4',
+    branch: [
+      "LCK<-3:271001",
+    ]
+  },{
+    id:270003,
+    event: '你愤世嫉俗，觉得整个世界都在和你作对。',
+    include: 'SPR<0',
+  },{
+    id:270004,
+    event: '你觉得上班如同上坟。',
+    include: 'SPR<-1',
+  },{
+    id:270005,
+    event: '你最近压力很大，总是掉头发。',
+    include: 'SPR<-1',
+    branch: [
+      "LCK<-7:271002",
+    ]
+  },
   // -------- 婚姻，爱情 ----------------------
   {
     id: 220000,
@@ -1164,11 +1339,16 @@ const eventList = [
   }, {
     id: 300012,
     event: "你的LD没什么本事，却经常PUA你。",
+    exclude: "TLT?[1061]",
     effect: {
       SPR: -1,
     }
   }, {
     id: 300013,
+    event: "你的LD没什么本事，却经常PUA你。",
+    include: "TLT?[1061]",
+  }, {
+    id: 300014,
     event: "你觉得在这家公司里学不到什么东西了。",
     include: "WRK>15",
     effect: {
@@ -1453,7 +1633,7 @@ const eventList = [
   }, {
     id: 850020,
     event: '你入职了新公司，认识了可爱的同事们，于是吟诗一首。',
-    exclude: 'WRK=1',
+    include: 'WRK=1',
   }, {
     id: 850021,
     event: '这个月前后改了10次需求，最后项目关停了。'
@@ -1480,7 +1660,122 @@ const eventList = [
     postEvent: '年轻的程序员哟~，你丢的是这个夏树人，还是这个商树人，还是这个鲁迅呢？',
     include: 'EVT?[850026]',
     exclude: 'EVT?[850027]',
-  }
+  },
+  // ---- 掘金 ----
+  {
+    id: 860000,
+    event: '你在掘金读到了一篇讲前端的好文章。',
+    include: "EVT?[120003]",
+    branch: [
+      'LCK>7:861001',
+    ],
+  },
+  {
+    id: 860001,
+    event: '你在掘金读到了一篇讲后端的好文章。',
+    include: "EVT?[120003]",
+    branch: [
+      'LCK>7:861001',
+    ],
+  },
+  {
+    id: 860002,
+    event: '你在掘金读到了一篇讲算法的好文章。',
+    include: "EVT?[120003]",
+    branch: [
+      'LCK>7:861001',
+    ],
+  },
+  {
+    id: 860003,
+    event: '你在掘金沸点上班摸鱼。',
+    include: "EVT?[120003]",
+    branch: [
+      'LCK>7:861002',
+    ],
+  },
+  {
+    id: 861001,
+    event: '你的能力提升了。',
+    effect: {
+      INT: 1,
+    }
+  },
+  {
+    id: 861002,
+    event: '你觉得很开心。',
+    effect: {
+      SPR: 1,
+    }
+  },
+
+  // 退休事件
+  {
+    id: 999000,
+    event: '一晃50年过去了，你把最好的时光都献给了软件开发事业，现在你光荣退休了。',
+    include: 'AGE>599',
+    branch: retireGameOver,
+  },
+  {
+    id: 999001,
+    event: '你作为程序员工作了10年，觉得自己的生活没什么起色，你不打算干下去了。',
+    include: '(AGE>120)&(MNY<2)',
+    branch: gameOver,
+  },
+  {
+    id: 999002,
+    event: '你作为程序员工作了10年，觉得自己不喜欢这个职业，你不打算干下去了。',
+    include: '(AGE>120)&(SPR<1)',
+    branch: gameOver,
+  },
+  {
+    id: 999003,
+    event: '你作为程序员工作了10年，觉得自己干不动了。',
+    include: '(AGE>120)&(STR<1)',
+    branch: gameOver,
+  },
+  {
+    id: 999004,
+    event: '你作为程序员工作了20年，觉得自己的生活没什么起色，你不打算干下去了。',
+    include: '(AGE>240)&(MNY<4)',
+    branch: gameOver,
+  },
+  {
+    id: 999005,
+    event: '你作为程序员工作了20年，觉得自己不喜欢这个职业，你不打算干下去了。',
+    include: '(AGE>240)&(SPR<3)',
+    branch: gameOver,
+  },
+  {
+    id: 999006,
+    event: '你作为程序员工作了20年，觉得自己干不动了。',
+    include: '(AGE>240)&(STR<3)',
+    branch: gameOver,
+  },
+  {
+    id: 999007,
+    event: '你作为程序员工作了30年，觉得自己的生活没什么起色，你不打算干下去了。',
+    include: '(AGE>240)&(MNY<5)',
+    branch: gameOver,
+  },
+  {
+    id: 999008,
+    event: '你作为程序员工作了30年，觉得自己不喜欢这个职业，你不打算干下去了。',
+    include: '(AGE>240)&(SPR<4)',
+    branch: gameOver,
+  },
+  {
+    id: 999009,
+    event: '你作为程序员工作了30年，觉得自己干不动了。',
+    include: '(AGE>240)&(STR<4)',
+    branch: gameOver,
+  },
+  {
+    id: 999010,
+    event: '你财务自由了，不想再做程序员了。',
+    include: '(AGE>120)&(SPR>6)&(MNY>15)',
+    branch: gameOver,
+  },
 ];
 
 export const events = map(eventList);

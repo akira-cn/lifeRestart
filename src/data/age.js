@@ -107,6 +107,16 @@ const evtFamily = [
   220017,
 ];
 
+// 心情事件
+const evtMood = [
+  270000,
+  270001,
+  270002,
+  270003,
+  270004,
+  270005,
+];
+
 // 跳槽事件
 const evtJump = [
   230000,
@@ -133,6 +143,7 @@ const evtWork = [
   300011,
   300012,
   300013,
+  300014,
 ];
 
 const evtFund = [
@@ -200,17 +211,41 @@ const evtYear = [
   "600004*10",
 ];
 
+const evtJuejin = [
+  860000,
+  860001,
+  860002,
+  860003,
+];
+
+const evtRetire = [
+  "999000*1000",
+  "999001*1000",
+  "999002*1000",
+  "999003*1000",
+  "999004*1000",
+  "999005*1000",
+  "999006*1000",
+  "999007*1000",
+  "999008*1000",
+  "999009*1000",
+  "999010*1000",
+];
+
 const evtNormal = [
   ...evtStartWork,
   ...evtBootCamp,
   ...evtUseless,
   ...evtCHR,
   ...evtFamily,
+  ...evtMood,
   ...evtJump,
   ...evtWork,
   ...evtHeath,
   ...evtYear,
   ...evtFun,
+  ...evtJuejin,
+  ...evtRetire,
 ];
 
 const ageList = [
@@ -312,15 +347,15 @@ const ageList = [
       120003,
     ]
   }, 
-  ...generateEachYear(30),
+  ...generateEachYear(50),
   // 结束
-  {
-    age: 600,
-    event: [
-      999999,
-      800004
-    ]
-  }
+  // {
+  //   age: 600,
+  //   event: [
+  //     999999,
+  //     800004
+  //   ]
+  // }
 ];
 
 function generateEachYear(n = 10) {
