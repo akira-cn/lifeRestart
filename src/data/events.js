@@ -793,10 +793,12 @@ const eventList = [
     id: 150016,
     event: "你画了一个桃花妆，美美哒",
     include: `(CHR>4)&(${conFemale2})`,
+    exclude: 'EVT?[150016]',
   }, {
     id: 150017,
     event: "你画了一个嫦娥妆，美美哒",
     include: `(CHR>4)&(${conFemale2})`,
+    exclude: 'EVT?[150017]',
   }, {
     id: 150018,
     event: "因为你的高跟鞋磨脚，脚踝受了伤",
