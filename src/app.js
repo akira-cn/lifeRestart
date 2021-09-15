@@ -625,7 +625,7 @@ class App{
                         ${format('颜值', 'CHR')}
                         ${format('智力', 'INT')}
                         ${format('体质', 'STR')}
-                        ${format('家境', 'MNY')}
+                        ${format('收入', 'MNY')}
                         ${format('心态', 'SPR')}
                         ${format('工龄', 'AGE')}
                         ${format('总评', 'SUM')}
