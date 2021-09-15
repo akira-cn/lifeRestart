@@ -43,12 +43,12 @@ function parseCondition(condition) {
     return conditions;
 }
 
-function checkCondition(property, condition) {
+function checkCondition(property, condition, test = false) {
     const conditions = parseCondition(condition);
-    return checkParsedConditions(property, conditions);
+    return checkParsedConditions(property, conditions, test);
 }
 
-function checkParsedConditions(property, conditions) {
+function checkParsedConditions(property, conditions, test = false) {
     if(!Array.isArray(conditions)) return checkProp(property, conditions);
     if(conditions.length == 0) return true;
     if(conditions.length == 1) return checkParsedConditions(property, conditions[0]);
@@ -57,10 +57,10 @@ function checkParsedConditions(property, conditions) {
     for(let i=1; i<conditions.length; i+=2) {
         switch(conditions[i]) {
             case '&':
-                if(ret) ret = checkParsedConditions(property, conditions[i+1]);
+                if(test || ret) ret = checkParsedConditions(property, conditions[i+1]);
                 break;
             case '|':
-                if(ret) return true;
+                if(!test && ret) return true;
                 ret = checkParsedConditions(property, conditions[i+1]);
                 break;
             default: return false;

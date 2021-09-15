@@ -29,6 +29,8 @@ class Life {
         this.#event.initial({events});
         this.#achievement.initial({achievements});
 
+        // console.log(checkCondition(this.#property, '(CHR>10)&(EVT?[150024]}):900014', true));
+
         // test
         // const conditions = [];
         // for(const evt of Object.values(events)) {
@@ -49,7 +51,7 @@ class Life {
         //     const cond = conditions[i];
 
         //     // console.log(i, cond);
-        //     checkCondition(this.#property, cond);
+        //     checkCondition(this.#property, cond, true);
         // }
         // console.log('done', conditions.length);
     }
