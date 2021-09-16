@@ -11,6 +11,7 @@ const talentList = [
       INT: 3
     }
   }, {
+    // 没什么作用
     id: 1002,
     name: "闷骚",
     description: "大部分程序员的特征",
@@ -63,28 +64,33 @@ const talentList = [
         CHR: 2
     }
   }, {
+    // 不懂得怜香惜玉
     id: 1054,
     name: "IT直男",
     description: "传说中的IT直男",
-    grade: 1
+    grade: 1,
+    exclusive: [
+      1004,
+    ],
   }, {
     id: 1005,
     name: "黑客精神",
     description: "发现程序漏洞的几率增加",
-    grade: 2
+    grade: 0
   }, {
     id: 1006,
     name: "好奇宝宝",
-    description: "倾向于使用新技术",
-    grade: 0,
+    description: "心态+1, 倾向于使用新技术",
+    grade: 1,
     effect: {
         SPR: 1
     }
   }, {
+    // 你不会参与抢月饼
     id: 1007,
     name: "乖孩子",
     description: "不喜欢破坏规则",
-    grade: 1
+    grade: 0,
   }, {
     id: 1008,
     name: "大器晚成",
@@ -126,6 +132,9 @@ const talentList = [
     id: 1012,
     name: "租房一族",
     description: "你不买房",
+    exclusive: [
+      1050,
+    ],
     grade: 0
   }, {
     id: 1013,
@@ -374,6 +383,9 @@ const talentList = [
     name: "房奴一族",
     description: "拼尽全力贷款买房",
     condition: "MNY>4",
+    exclusive: [
+      1012
+    ],
     grade: 0,
   }, {
     id: 1051,

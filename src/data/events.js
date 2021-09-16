@@ -52,8 +52,8 @@ const gameOver = [
   "(EVT?[150024])&(EVT?[150020]):900007", // 女装大佬真爱结局2
   "(MNY>7)&(LCK>5)&(SPR>5):900002", // 意外继承了一大笔遗产
   "(MNY>7)&(LCK>5):900003", // 意外继承了一大笔遗产2
-  `(CHR>10)&(${conFemale}):900013`, // 霸道总裁结局1
-  `(CHR>10)&(EVT?[150024]):900014`, // 霸道总裁结局2
+  `(CHR>12)&(${conFemale}):900013`, // 霸道总裁结局1
+  `(CHR>12)&(EVT?[150024]):900014`, // 霸道总裁结局2
   "(CHR>7)&(EVT?[150009]):900005", //主播结局
   "(CHR>7):900012", // 明星结局
   "(MNY>7)&(CHR>5):900004", // 演艺圈结局
@@ -612,6 +612,7 @@ const eventList = [
         MNY: 1
     },
     include: "INT>6",
+    exclude: "TLT?[1007]",
     branch: [
         "CHR<7:130001",
         "CHR>6:130002"
@@ -780,7 +781,7 @@ const eventList = [
   }, {
     id: 150014,
     event: "有女同事频频对你献殷勤。",
-    include: `(CHR>7)&${conMale}`,
+    include: `(CHR>7)&${conMale2}`,
     exclude: 'EVT?[150023]'
   }, {
     id: 150015,
@@ -1074,7 +1075,7 @@ const eventList = [
     id: 220001,
     event: "你的妻子告诉你她怀孕了。",
     include: "(EVT?[100001])&(EVT?[220000])",
-    exclude: "(PRG>0)|(PRG<0)|(EVT?[220001])|(EVT?[150023])",
+    exclude: "(PRG>0)|(PRG<0)|(EVT?[220001])|(EVT?[150023])|(EVT?[510004])",
     effect: {
       PRG: 1
     }
@@ -1730,6 +1731,7 @@ const eventList = [
   }, {
     id: 850010,
     event: '你成为了A-SOUL第六人。',
+    exclude: 'EVT?[850010]',
   }, {
     id: 850011,
     event: '你打王者农药的时候和人对骂。',
@@ -1775,10 +1777,12 @@ const eventList = [
   }, {
     id: 850024,
     event: '你在津津有味地看犀牛书，但是忽然想起自己并不是前端。',
+    exclude: 'EVT?[850024]',
   }, {
     id: 850025,
     event: '同事问你0.1+0.2是多少，',
-    postEvent: '果断回答是0.30000000000000004。'
+    postEvent: '果断回答是0.30000000000000004。',
+    exclude: 'EVT?[850025]'
   }, {
     id: 850026,
     event: '你不小心把祖传的木雕树人给丢在家门口的河里了，那可是唐朝文物。',
@@ -1789,6 +1793,108 @@ const eventList = [
     postEvent: '年轻的程序员哟~，你丢的是这个夏树人，还是这个商树人，还是这个鲁迅呢？',
     include: 'EVT?[850026]',
     exclude: 'EVT?[850027]',
+  }, {
+    id: 850028,
+    event: '因为疫情线下的技术大会都不开，你已经两年没新衣服穿了。',
+    include: 'AGE>24',
+  }, {
+    id: 850029,
+    event: '你从家里的旧书柜中找到了一本郑渊洁的《童话大王》，勾起了你年少时的回忆。',
+    exclude: 'EVT?[850029]',
+  }, {
+    id: 850030,
+    event: '你养了一缸金鱼，三天换一次水，七天换一次鱼。',
+  }, {
+    id: 850031,
+    event: 'LD让你在会议室寄个土豆。',
+  }, {
+    id: 850032,
+    event: '一直调试不通过的代码，莫名其妙就好了，迎着同事询问的目光，你也不好意思说自己什么也没做。',
+  }, {
+    id: 850033,
+    event: '你的VSCode突然打不开了，你被迫用Eclipse。',
+    postEvent: '你打开Eclipse后去喝了一杯咖啡，回来时，项目还没加载出来。',
+  }, {
+    id: 850034,
+    event: '你和同事吵了一架，因为他竟然怀疑PHP不是世界上最好的语言。',
+  },
+  {
+    id: 850035,
+    event: '你离开工位忘记锁屏，一位保洁阿姨在整理工区时顺手帮你改好了一个困扰你好几天的bug。',
+    effect: {
+      LCK: 1,
+    }
+  },
+  // --- 女生 ---
+  {
+    id: 870000,
+    include: conFemale,
+    event: '你发现身边有个男同事是个精致Boy。'
+  },
+  {
+    id: 870001,
+    include: `(CHR>6)&(${conFemale2})`,
+    event: '你以一己之力拉高了整个部门的颜值',
+  },
+  {
+    id: 870002,
+    include: conFemale2,
+    event: 'PM给你分了一个需求，要求一周内完成。',
+    postEvent: '你卖个萌，完成时间变成两周。',
+  },
+  {
+    id: 870003,
+    include: conFemale,
+    event: '对面有个女生身上的香水味道好好闻。',
+  },
+  {
+    id: 870004,
+    include: conFemale2,
+    event: '你买了一副精致的耳环。',
+  },
+  {
+    id: 870005,
+    include: conFemale2,
+    event: '部门聚会，你穿了一袭白色长裙，惊艳全场。',
+  },
+  // --- 男生 ---
+  {
+    id: 880000,
+    include: conMale,
+    exclude: `(${conFemale2})|(EVT?[220000])`,
+    event: '逛购物网站时，你想给女朋友买一条围巾。',
+    postEvent: '突然想起来你没有女朋友。',
+  },
+  {
+    id: 880001,
+    include: conMale,
+    exclude: conFemale2,
+    event: '下班去踢球，一脚开球把LD加的窗户玻璃砸碎了。',
+    postEvent: '趁LD在加班，赶快溜走。',
+  },
+  {
+    id: 880002,
+    include: conMale,
+    exclude: conFemale2,
+    event: '上班路上遇到小偷，你见义勇为抓住小偷，结果上班迟到被批评了一顿。',
+  },
+  {
+    id: 880003,
+    include: conMale,
+    exclude: conFemale2,
+    event: '你买了一双拖鞋，在办公区穿。',
+  },
+  {
+    id: 880004,
+    include: conMale,
+    exclude: conFemale2,
+    event: '你觉得自己有一天会成为救世主。',
+  },
+  {
+    id: 880005,
+    include: `(${conMale})&(CHR>6)`,
+    exclude: conFemale2,
+    event: '你在路上发现一枚帅哥，仔细一看，原来是镜子里的自己。',
   },
   // ---- 掘金 ----
   {
@@ -1922,6 +2028,89 @@ const eventList = [
     include: '(TLT?[1049])&(WRK>11)',
     exclude: "EVT?[1110000]",
     branch: jump1,
+  },
+  // 天赋 1054：IT直男、桃花连连，1028
+  {
+    id: 132000,
+    event: '你很有异性缘。',
+    exclude: `(${conFemale})|(EVT?[132000,131001])`,
+    include: 'TLT?[1028]',
+    branch: [
+      'LCK>-7:131001',
+    ],
+  },
+  {
+    id: 131001,
+    event: '有女同事对你表示好感。',
+    include: `(CHR>4)|(INT>5)`,
+    exclude: `(${conFemale})|(EVT?[131001])`,
+    branch: [
+      'TLT?[1054]:131101',
+      'LCK>-5:131100',
+      'LCK>-100:131101',
+    ],
+  },
+  {
+    id: 131100,
+    event: '你有点心动。',
+  },
+  {
+    id: 131101,
+    event: '你忙于工作，无动于衷。',
+  },
+  {
+    id: 131002,
+    include: 'EVT?[131100]',
+    event: '你和女同事感情加深了，同事开始说你们很有默契。',
+    exclude: `(${conFemale})|(EVT?[131002])`
+  },
+  {
+    id: 131003,
+    include: 'EVT?[131002]',
+    event: '你觉得和她一起工作很愉快，你们之间有一种道不清说不明的关系。',
+    postEvent: '也许这就是爱情。',
+    exclude: `(${conFemale})|(EVT?[131003])`,
+    effect: {
+      SPR: 1,
+    },
+  },
+  {
+    id: 131004,
+    include: 'EVT?[131003]',
+    event: '你确定自己已经坠入爱河。',
+    exclude: `(${conFemale})|(EVT?[131004])`,
+    effect: {
+      SPR: 1,
+    },
+    branch: [
+      'EVT?[220000]:131102',
+      'LCK>-100:131103'
+    ],
+  },
+  {
+    id: 131102,
+    event: '你出轨了，但你已无法回头。',
+  },
+  {
+    id: 131103,
+    event: '你向她求婚了，同事祝你们幸福。',
+  },
+  // 黑客
+  {
+    id: 131005,
+    event: '你发现了一个代码漏洞，打算下次中秋节利用它来抢月饼。',
+    include: 'TLT?[1005]',
+    exclude: 'EVT?[131005]',
+  },
+  {
+    id: 131006,
+    event: '你报告并修复了项目中一个潜在的安全漏洞。',
+    postEvent: '老板很满意，给你发了额外奖金。',
+    include: 'TLT?[1005]',
+    exclude: 'EVT?[131006]',
+    effect: {
+      MNY: 1,
+    },
   },
   // ---- 八卦 -----
   {
