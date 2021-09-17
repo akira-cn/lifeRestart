@@ -2087,15 +2087,22 @@ const eventList = [
     id: 860003,
     event: '你在掘金沸点上班摸鱼。',
     include: "EVT?[120003]",
-    effect: {
-      SPR: 1,
-    }
+    branch: [
+      'LCK>2:861002',
+    ]
   },
   {
     id: 861001,
     event: '你的能力提升了。',
     effect: {
       INT: 1,
+    }
+  },
+  {
+    id: 861002,
+    event: '你的沸点被点了超过100个赞，很开心。',
+    effect: {
+      SPR: 1,
     }
   },
   {
