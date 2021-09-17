@@ -539,13 +539,19 @@ const eventList = [
     include: `(INT>4)&(${conAlreadyHaveJob})`,
   }, {
     id: 120001,
-    event: "LD欣赏你的能力，给你涨了点工资。",
-    effect : {
-        MNY: 1
-    },
+    event: "LD欣赏你的能力，夸你能干。",
     include: "INT>5",
-    exclude: "(ENV>2)|(LCK<1)" // 大厂不会随便给人涨工资
+    branch: [
+      '(LCK>-2)&(ENV<3):121666',
+    ],
   }, {
+    id: 121666,
+    event: '这个月给你涨了点工资',
+    effect : {
+      MNY: 1
+    },
+  },
+  {
     id: 120002,
     event: "你努力工作"
   }, {
