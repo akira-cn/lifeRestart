@@ -244,6 +244,51 @@ const achievementList = [
     hide: 1,
     opportunity: "TRAJECTORY"
   },
+  {
+    id: 128,
+    name: "受虐狂",
+    description: "你因为不用加班而不开心。",
+    grade: 2,
+    condition: "EVT?[850053]",
+    hide: 0,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 129,
+    name: "抢月饼",
+    description: "抢月饼会发生什么呢？",
+    grade: 1,
+    condition: "EVT?[130000]",
+    hide: 0,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 130,
+    name: "脑门闪亮",
+    description: "秃头也挡不住你的颜值。",
+    grade: 0,
+    condition: "EVT?[500002]",
+    hide: 0,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 131,
+    name: "为了颜值",
+    description: "你用雌激素治疗脱发。",
+    grade: 1,
+    condition: "EVT?[510003]",
+    hide: 0,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 132,
+    name: "美丽的意外",
+    description: "用雌激素结果变性。",
+    grade: 2,
+    condition: "EVT?[510004]",
+    hide: 1,
+    opportunity: "TRAJECTORY"
+  },
 ];
 
 export const achievements = map(achievementList);

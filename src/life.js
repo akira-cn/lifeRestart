@@ -6,7 +6,6 @@ import { talents } from './data/talents.js';
 import { age } from './data/age.js';
 import { events } from './data/events.js';
 import { achievements } from './data/achievements.js';
-// import { checkCondition } from './functions/condition.js';
 
 class Life {
     constructor() {
@@ -23,37 +22,10 @@ class Life {
     #triggerTalents;
 
     async initial() {
-        // console.log(events);
         this.#property.initial({age});
         this.#talent.initial({talents});
         this.#event.initial({events});
         this.#achievement.initial({achievements});
-
-        // console.log(checkCondition(this.#property, '(CHR>10)&(EVT?[150024]}):900014', true));
-
-        // test
-        // const conditions = [];
-        // for(const evt of Object.values(events)) {
-        //     // console.log(evt);
-        //     if(evt.include) {
-        //         conditions.push(evt.include);
-        //     }
-        //     if(evt.exclude) {
-        //         conditions.push(evt.exclude);
-        //     }
-        //     if(evt.branch) {
-        //         conditions.push(...evt.branch.map(s => s[0]));
-        //         // console.log(evt.branch);
-        //     }
-        // }
-        // console.log(conditions);
-        // for(let i = 0; i < conditions.length; i++) {
-        //     const cond = conditions[i];
-
-        //     // console.log(i, cond);
-        //     checkCondition(this.#property, cond, true);
-        // }
-        // console.log('done', conditions.length);
     }
 
     restart(allocation) {

@@ -82,8 +82,11 @@ const talentList = [
     name: "好奇宝宝",
     description: "心态+1, 倾向于使用新技术",
     grade: 1,
+    exclusive: [
+      1025,
+    ],
     effect: {
-        SPR: 1
+      SPR: 1
     }
   }, {
     // 你不会参与抢月饼
@@ -190,7 +193,7 @@ const talentList = [
     status: 2
   }, {
     id: 1020,
-    name: "父母高智",
+    name: "书香门第",
     description: "智力+2",
     grade: 1,
     effect: {
@@ -228,7 +231,7 @@ const talentList = [
     description: "倾向于使用老旧技术",
     grade: 0,
     exclusive: [
-        1004
+        1006
     ]
   }, {
     id: 1026,
@@ -421,7 +424,7 @@ const talentList = [
   }, {
     id: 1056,
     name: "工作狂",
-    description: "经常连续加班",
+    description: "你愿意连续加班",
     grade: 1,
   }, {
     id: 1057,
@@ -466,6 +469,12 @@ const talentList = [
     name: '八卦之神',
     description: '能够打听到一些有用的小道消息。',
     grade: 2,
+  },
+  {
+    id: 1064,
+    name: '好学青年',
+    description: '即使在国企里，也能持续学习。',
+    grade: 1,
   }
 ];
 
