@@ -199,6 +199,51 @@ const achievementList = [
     hide: 1,
     opportunity: "TRAJECTORY"
   },
+  {
+    id: 123,
+    name: "平行宇宙",
+    description: "原来平行宇宙是真的？？！",
+    grade: 0,
+    condition: "EVT?[1110000]",
+    hide: 1,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 124,
+    name: "葫芦娃",
+    description: "葫芦娃，一根藤上七朵花。",
+    grade: 1,
+    condition: "EVT?[1110001]",
+    hide: 1,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 125,
+    name: "齐天大圣",
+    description: "孙悟空加入。",
+    grade: 3,
+    condition: "EVT?[1111008,1111009]",
+    hide: 1,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 126,
+    name: "救世主",
+    description: "你拯救了世界。",
+    grade: 3,
+    condition: "EVT?[1111011,1111012]",
+    hide: 1,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 127,
+    name: "末日英雄",
+    description: "你试图拯救世界，但没有成功。",
+    grade: 3,
+    condition: "EVT?[1111010]",
+    hide: 1,
+    opportunity: "TRAJECTORY"
+  },
 ];
 
 export const achievements = map(achievementList);
