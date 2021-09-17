@@ -222,6 +222,7 @@ const evtFun = [
   850053,
   850054,
   850055,
+  850056,
   870000,
   870001,
   870002,
@@ -378,7 +379,7 @@ const ageList = [
     age: 4,
     event: [
       ...evtNormal,
-      120001,
+      "120001*3",
       120002,
       120003
     ]
@@ -386,7 +387,7 @@ const ageList = [
     age: 5,
     event: [
       ...evtNormal,
-      120001,
+      "120001*3",
       120002,
       120003
     ]
@@ -394,7 +395,7 @@ const ageList = [
     age: 6,
     event: [
       ...evtNormal,
-      120001,
+      "120001*3",
       120002,
       120003
     ]
@@ -402,7 +403,7 @@ const ageList = [
     age: 7,
     event: [
       ...evtNormal,
-      120001,
+      "120001*3",
       120002,
       120003
     ]
@@ -410,7 +411,7 @@ const ageList = [
     age: 8,
     event: [
       ...evtNormal,
-      120001,
+      "120001*3",
       120002,
       120003
     ]
@@ -419,7 +420,7 @@ const ageList = [
     event: [
       ...evtNormal,
       ...evtMooncake,
-      120001,
+      "120001*3",
       120002,
       120003,
     ]
@@ -427,7 +428,7 @@ const ageList = [
     age: 10,
     event: [
       ...evtNormal,
-      120001,
+      "120001*3",
       120002,
       120003,
     ]
@@ -435,7 +436,7 @@ const ageList = [
     age: 11,
     event: [
       ...evtNormal,
-      120001,
+      "120001*3",
       120002,
       120003,
     ]
@@ -443,7 +444,7 @@ const ageList = [
     age: 12,
     event: [
       ...evtNormal,
-      120001,
+      "120001*3",
       120002,
       120003,
     ]
@@ -468,7 +469,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 1,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -476,7 +477,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 2,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -485,7 +486,7 @@ function generateEachYear(n = 10) {
         event: [
           ...evtNormal,
           ...evtAcceptTask,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -494,7 +495,7 @@ function generateEachYear(n = 10) {
         event: [
           ...evtNormal,
           ...evtFund,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -502,7 +503,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 5,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -510,7 +511,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 6,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -518,7 +519,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 7,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -526,7 +527,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 8,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
           '390001*100',
@@ -536,7 +537,7 @@ function generateEachYear(n = 10) {
         event: [
           ...evtNormal,
           ...evtMooncake,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -544,7 +545,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 10,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -552,7 +553,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 11,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
@@ -560,7 +561,7 @@ function generateEachYear(n = 10) {
         age: i * 12 + 12,
         event: [
           ...evtNormal,
-          120001,
+          "120001*3",
           120002,
           120003,
         ]
