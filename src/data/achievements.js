@@ -31,7 +31,7 @@ const achievementList = [
   {
     id: 104,
     name: '跨性别',
-    description: '为了爱情...',
+    description: '女装大佬的不归路',
     grade: 2,
     condition: 'EVT?[150023]',
     hide: 1,
@@ -282,11 +282,38 @@ const achievementList = [
   },
   {
     id: 132,
-    name: "美丽的意外",
+    name: "美丽的代价",
     description: "用雌激素结果变性。",
     grade: 2,
     condition: "EVT?[510004]",
     hide: 1,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 133,
+    name: "有房有车",
+    description: "买了房也买了车。",
+    grade: 1,
+    condition: "(EVT?[400017])&(EVT?[400005,400105])",
+    hide: 0,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 134,
+    name: "五子登科",
+    description: "有房、有车、结婚、有娃、有钱",
+    grade: 2,
+    condition: "(EVT?[400017])&(EVT?[400005,400105])&(EVT?[220003,220004])&(MNY>5)",
+    hide: 0,
+    opportunity: "TRAJECTORY"
+  },
+  {
+    id: 135,
+    name: "黄袍加身",
+    description: "退休后去送外卖",
+    grade: 1,
+    condition: "EVT?[999115]",
+    hide: 0,
     opportunity: "TRAJECTORY"
   },
 ];

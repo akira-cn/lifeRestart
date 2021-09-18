@@ -117,7 +117,6 @@ const talentList = [
     grade: 2,
     exclusive: [
       1011,
-      1012
     ],
     effect: {
       SPR: 2,
@@ -127,6 +126,9 @@ const talentList = [
     id: 1011,
     name: "养家糊口",
     description: "你有家庭负担，收入-1",
+    exclusive: [
+      1010,
+    ],
     grade: 0,
     effect: {
       MNY: -1
@@ -151,10 +153,7 @@ const talentList = [
     id: 1014,
     name: "理财达人",
     description: "炒股赚钱的几率增加",
-    grade: 2,
-    effect: {
-        MNY: 1
-    }
+    grade: 1,
   }, {
     id: 1015,
     name: "稳如狗",
@@ -231,13 +230,13 @@ const talentList = [
     description: "倾向于使用老旧技术",
     grade: 0,
     exclusive: [
-        1006
+      1006
     ]
   }, {
     id: 1026,
     name: "鼓励师",
-    description: "你是程序员鼓励师",
-    grade: 1
+    description: "你可能会成为程序员鼓励师",
+    grade: 0
   }, {
     id: 1027,
     name: "疑似作弊",
@@ -364,13 +363,13 @@ const talentList = [
   }, {
     id: 1045,
     name: "大红人",
-    description: "你容易被提名晋升",
+    description: "你容易通过晋升",
     grade: 2
   }, {
     id: 1046,
     name: "雍正附体",
     description: "你很少写bug",
-    grade: 2
+    grade: 1
   }, {
     id: 1048,
     name: "平行世界",
@@ -385,7 +384,6 @@ const talentList = [
     id: 1050,
     name: "房奴一族",
     description: "拼尽全力贷款买房",
-    condition: "MNY>4",
     exclusive: [
       1012
     ],
